@@ -18,7 +18,10 @@ class ReturnMoney extends View
         $amount = $card->amount * -1;
 
         if( ! $card ) {
-            \Template::render("card_not_found.html");
+            \Template::render("error.html", [
+                "error" => "Card Not Found",
+                "back" => "/",
+            ]);
         } else {
             $added = $this->transaction_repo->add_money( $card, $amount );
 
@@ -28,8 +31,7 @@ class ReturnMoney extends View
                 exit;
             } else {
                 \Template::render("money_returned.html", [
-                    // TODO: format number based on settings
-                    "amount" => number_format( $card->amount, 2 ),
+                    "amount" => \Numbers::number_format( $card->amount ),
                 ]);
             }
         }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cashless Card Payment</title>
+    <title>Charge Card</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
@@ -11,9 +11,10 @@
     <div class="bg-white shadow-md rounded-lg p-6 max-w-md w-full">
         {{ flash_messages }}
 
-        <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Cashless Card System</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Charge {{ payment_amount_fmt }}</h2>
 
-        <form autocomplete="off" method="post" action="/card" >
+        <form autocomplete="off" method="post" action="/charge_card">
+            <input type="hidden" name="payment_amount" value="{{ payment_amount }}" />
             <div class="mb-4">
                 <label for="card-number" class="block text-gray-700 font-medium mb-2">Card Number</label>
                 <input type="text" id="card-number" name="card_number" placeholder="Scan card or enter card number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -21,10 +22,13 @@
 
             <div class="text-center">
                 <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                    Continue
+                    Charge
                 </button>
             </div>
         </form>
+        <a href="/add_charge"><button class="w-full bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 mt-2.5">
+            Cancel
+        </button></a>
     </div>
     <script>
         document.querySelector("#card-number").focus();

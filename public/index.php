@@ -33,6 +33,13 @@ $router = new Router( [
         view: \View\ReturnMoney::class,
         args: [$card_repo, $transaction_repo],
     ),
+    "/add_charge" => new Route(
+        view: \View\AddCharge::class,
+    ),
+    "/charge_card" => new Route(
+        view: \View\ChargeCard::class,
+        args: [$card_repo, $transaction_repo],
+    ),
 ] );
 
 $router->route( $_SERVER['REQUEST_URI'] );

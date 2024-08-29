@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Details</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
     <div class="bg-white shadow-md rounded-lg p-6 max-w-md w-full">
+        <a href="/" title="Go back"><i class="fa fa-arrow-left"></i></a>
+
         {{ flash_messages }}
 
         <p class="text-red-700 text-center">{{ new_card_info }}</p>
 
         <h2 class="text-3xl font-semibold text-gray-800 text-center mb-6">This card has {{ amount }} on it</h2>
 
-        <form method="post" action="/add_money">
+        <form autocomplete="off" method="post" action="/add_money">
             <input type="hidden" name="card_number" value="{{ card_number }}" />
             <input type="hidden" name="new_card" value="{{ new_card }}" />
             <div class="mb-4">
@@ -39,6 +42,8 @@
             </div>
         </form>
     </div>
-
+    <script>
+        document.querySelector("#add-money").focus();
+    </script>
 </body>
 </html>

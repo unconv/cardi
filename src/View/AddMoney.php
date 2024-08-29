@@ -29,10 +29,13 @@ class AddMoney extends View
         }
 
         $card = $this->card_repo->find_by_number( $_POST['card_number'] );
-        $amount = floatval( $_POST['add_money'] ); // TODO: use custom float conversion function
+        $amount = \Numbers::floatval( $_POST['add_money'] );
 
         if( ! $card ) {
-            \Template::render("card_not_found.html");
+            \Template::render("error.html", [
+                "error" => "Card Not Found",
+                "back" => "/",
+            ]);
         } else {
             $added = $this->transaction_repo->add_money( $card, $amount );
 
@@ -42,7 +45,7 @@ class AddMoney extends View
                 \FlashMessages::success( "Money added successfully!" );
             }
 
-            header( "Location: /card/" . $card->card_number );
+            header( "Location: /" );
             exit;
         }
     }

@@ -41,8 +41,7 @@ class Card extends View
         }
 
         \Template::render( "card_details.html", [
-            // TODO: get number formatting from settings
-            "amount" => number_format( $amount, 2 ),
+            "amount" => \Numbers::number_format( $amount ),
             "card_number" => $card_number,
             "new_card" => $new_card,
             "return_money_class" => $return_money_class,
