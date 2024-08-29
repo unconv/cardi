@@ -1,0 +1,12 @@
+{
+    "name": "unconv/cardi",
+    "authors": [
+        {
+            "name": "unconv",
+            "email": "unconventionalcoding@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpstan/phpstan": "^1.11"
+    }
+}

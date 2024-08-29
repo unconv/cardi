@@ -1,0 +1,22 @@
+cards
+- id
+- card_number
+- amount
+- registered_time
+
+transactions
+- id
+- timestamp
+- merchant
+- product
+- amount
+
+merchants
+- id
+- name
+
+products
+- id
+- name
+- price
+- merchant
